@@ -1,0 +1,15 @@
+## Interface: 11304
+## Title: LoggerHead Classic
+## Notes: Automatically turns on the combat log for selected raid instances.
+## Author: VallanTV
+## Version: 1.0.3
+## SavedVariables: LoggerHeadNDB
+## OptionalDeps: Ace3
+## X-Category: Raid
+## X-Credits: Neb for LoggerHeadLite, Sano/rsmozang for LoggerHead
+
+embeds.xml
+locales.xml
+
+Core.lua
+Config.lua
