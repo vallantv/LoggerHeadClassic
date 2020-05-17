@@ -1,5 +1,5 @@
 ## Interface: 11304
-## Title: LoggerHead Classic
+## Title: LoggerHeadLite Classic
 ## Notes: Automatically turns on the combat log for selected raid instances.
 ## Author: VallanTV
 ## Version: 1.0.3

@@ -3,7 +3,7 @@ local module = addon:NewModule("Config")
 
 local L = LibStub("AceLocale-3.0"):GetLocale(ADDON_NAME)
 
-local ADDON_TITLE = "LoggerHead Classic"
+local ADDON_TITLE = "LoggerHeadLite Classic"
 
 local INSTANCE_INFO =  {
 	[249] = "Onyxia's Lair",

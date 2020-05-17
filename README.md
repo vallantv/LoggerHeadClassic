@@ -1,1 +1,1 @@
-LoggerHeadClassic
+LoggerHeadLiteClassic
