@@ -2,7 +2,7 @@
 ## Title: LoggerHeadLite Classic
 ## Notes: Automatically turns on the combat log for selected raid instances.
 ## Author: VallanTV
-## Version: 1.0.3
+## Version: 1.0.5
 ## SavedVariables: LoggerHeadNDB
 ## OptionalDeps: Ace3
 ## X-Category: Raid
