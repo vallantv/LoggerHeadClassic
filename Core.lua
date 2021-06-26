@@ -7,13 +7,23 @@ local defaults = {
 	profile = {
 		prompt = true,
 		zones = {
-			[249] = true,
-			[409] = true,
-			[469] = true,
-			[509] = true,
-			[531] = true,
-			[533] = true,
-			[309] = true
+			--Classic
+			[249] = true,	--Onyxia's Lair
+			[409] = true,	--Molten Core
+			[469] = true,	--Blackwing Lair
+			[509] = true,	--Ruins of Ahn'Qiraj
+			[531] = true,	--Ahn'Qiraj Temple
+			[533] = true,	--Naxxramas
+			[309] = true,	--Zul'Gurub
+			--BC
+			[532] = true,	--Karazhan
+			[565] = true,	--Gruul's Lair
+			[544] = true,	--Magtheridon's Lair
+			[564] = true,	--Black Temple
+			[534] = true,	--Hyjal Summit
+			[548] = true,	--Serpentshrine Cavern
+			[550] = true,	--Tempest Keep
+			[580] = true,	--Sunwell Plateau
 		}
 	}
 }
