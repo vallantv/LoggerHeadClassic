@@ -7,7 +7,7 @@ local defaults = {
 	profile = {
 		prompt = true,
 		zones = {
-			--Classic
+			--Classic - Raids
 			[249] = true,	--Onyxia's Lair
 			[409] = true,	--Molten Core
 			[469] = true,	--Blackwing Lair
@@ -15,7 +15,8 @@ local defaults = {
 			[531] = true,	--Ahn'Qiraj Temple
 			[533] = true,	--Naxxramas
 			[309] = true,	--Zul'Gurub
-			--BC
+
+			--BC - Raids
 			[532] = true,	--Karazhan
 			[565] = true,	--Gruul's Lair
 			[544] = true,	--Magtheridon's Lair
@@ -24,6 +25,24 @@ local defaults = {
 			[548] = true,	--Serpentshrine Cavern
 			[550] = true,	--Tempest Keep
 			[580] = true,	--Sunwell Plateau
+
+			--BC - Heroics - Disabled By Default
+			[558] = false, 	--Auchenai Crypts
+			[543] = false, 	--Hellfire Ramparts
+			[585] = false, 	--Magisters' Terrace
+			[557] = false, 	--Mana-Tombs
+			[560] = false, 	--Old Hillsbrad Foothills
+			[556] = false, 	--Sethekk Halls
+			[555] = false, 	--Shadow Labyrinth
+			[552] = false, 	--The Arcatraz
+			[269] = false, 	--The Black Morass
+			[542] = false, 	--The Blood Furnace
+			[553] = false, 	--The Botanica
+			[554] = false, 	--The Mechanar
+			[540] = false, 	--The Shattered Halls
+			[547] = false, 	--The Slave Pens
+			[545] = false, 	--The Steamvault
+			[546] = false, 	--The Underbog
 		}
 	}
 }
@@ -38,8 +57,8 @@ function addon:OnInitialize()
 	self.db = LibStub("AceDB-3.0"):New("LoggerHeadNDB", defaults, true)
 	-- local db = self.db.profile
 	-- if db.zones == nil then
-	-- 	defaults.profile.zones;	
-	-- end	
+	-- 	defaults.profile.zones;
+	-- end
 end
 
 local function delayedCheck()
@@ -52,9 +71,18 @@ function addon:OnEnable()
 end
 
 function addon:CheckInstance(_, override)
-	local zoneName, instanceType, _, _, _, _, _, areaID = GetInstanceInfo()
+	local zoneName, instanceType, difficultyID, _, _, _, _, areaID = GetInstanceInfo()
+	print( string.join(
+		" ",
+		"GetInstanceInfo()",
+		" zoneName: ", zoneName,
+		", instanceType: ", instanceType,
+		", difficultyID: ", difficultyID,
+		", areaID: ", areaID
+	) )
+
 	local db = self.db.profile;
-	
+
 	if instanceType == "raid" then -- raid or challenge mode
 		if override ~= nil then -- called from the prompt
 			db.zones[areaID] = override
@@ -65,7 +93,16 @@ function addon:CheckInstance(_, override)
 			return
 		end
 	end
+	if instanceType == "party" and difficultyID == 174 then
+		if override ~= nil then -- called from the prompt
+			db.zones[areaID] = override
+		end
 
+		if db.zones[areaID] then
+			self:EnableLogging(true)
+			return
+		end
+	end
 	self:DisableLogging(true)
 end
 
