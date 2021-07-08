@@ -72,15 +72,6 @@ end
 
 function addon:CheckInstance(_, override)
 	local zoneName, instanceType, difficultyID, _, _, _, _, areaID = GetInstanceInfo()
-	print( string.join(
-		" ",
-		"GetInstanceInfo()",
-		" zoneName: ", zoneName,
-		", instanceType: ", instanceType,
-		", difficultyID: ", difficultyID,
-		", areaID: ", areaID
-	) )
-
 	local db = self.db.profile;
 
 	if instanceType == "raid" then -- raid or challenge mode
