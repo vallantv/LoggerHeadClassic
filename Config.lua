@@ -23,6 +23,7 @@ local BCC_INSTANCE_INFO = {
 	[548] = "Serpentshrine Cavern",
 	[550] = "Tempest Keep",
 	[580] = "Sunwell Plateau",
+	[568] = "Zul'Aman",
 }
 
 local function GetOptions()
