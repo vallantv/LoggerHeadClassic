@@ -24,6 +24,7 @@ local defaults = {
 			[548] = true,	--Serpentshrine Cavern
 			[550] = true,	--Tempest Keep
 			[580] = true,	--Sunwell Plateau
+			[568] = true,   --Zul'Aman
 		}
 	}
 }
