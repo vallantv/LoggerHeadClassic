@@ -7,7 +7,7 @@ local defaults = {
 	profile = {
 		prompt = true,
 		zones = {
-			--Classic - Raids
+			--Classic
 			[249] = true, --Onyxia's Lair
 			[409] = true, --Molten Core
 			[469] = true, --Blackwing Lair
@@ -15,7 +15,7 @@ local defaults = {
 			[531] = true, --Ahn'Qiraj Temple
 			[533] = true, --Naxxramas
 			[309] = true, --Zul'Gurub
-			--BC - Raids
+			--BC
 			[532] = true, --Karazhan
 			[565] = true, --Gruul's Lair
 			[544] = true, --Magtheridon's Lair
@@ -24,24 +24,7 @@ local defaults = {
 			[548] = true, --Serpentshrine Cavern
 			[550] = true, --Tempest Keep
 			[580] = true, --Sunwell Plateau
-			[568] = true, --Zul'Aman
-			--BC - Heroics - Disabled By Default
-			[558] = false, --Auchenai Crypts
-			[543] = false, --Hellfire Ramparts
-			[585] = false, --Magisters' Terrace
-			[557] = false, --Mana-Tombs
-			[560] = false, --Old Hillsbrad Foothills
-			[556] = false, --Sethekk Halls
-			[555] = false, --Shadow Labyrinth
-			[552] = false, --The Arcatraz
-			[269] = false, --The Black Morass
-			[542] = false, --The Blood Furnace
-			[553] = false, --The Botanica
-			[554] = false, --The Mechanar
-			[540] = false, --The Shattered Halls
-			[547] = false, --The Slave Pens
-			[545] = false, --The Steamvault
-			[546] = false --The Underbog
+			[568] = true --Zul'Aman
 		}
 	}
 }
