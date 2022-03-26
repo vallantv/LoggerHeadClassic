@@ -22,7 +22,8 @@ local BCC_INSTANCE_INFO = {
 	[534] = "Hyjal Summit",
 	[548] = "Serpentshrine Cavern",
 	[550] = "Tempest Keep",
-	[580] = "Sunwell Plateau"
+	[580] = "Sunwell Plateau",
+	[568] = "Zul'Aman"
 }
 local BCC_HEROIC_INFO = {
 	[558] = "Auchenai Crypts",
