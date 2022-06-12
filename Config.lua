@@ -23,7 +23,25 @@ local BCC_INSTANCE_INFO = {
 	[548] = "Serpentshrine Cavern",
 	[550] = "Tempest Keep",
 	[580] = "Sunwell Plateau",
-	[568] = "Zul'Aman",
+	[568] = "Zul'Aman"
+}
+local BCC_HEROIC_INFO = {
+	[558] = "Auchenai Crypts",
+	[543] = "Hellfire Ramparts",
+	[585] = "Magisters' Terrace",
+	[557] = "Mana-Tombs",
+	[560] = "Old Hillsbrad Foothills",
+	[556] = "Sethekk Halls",
+	[555] = "Shadow Labyrinth",
+	[552] = "The Arcatraz",
+	[269] = "The Black Morass",
+	[542] = "The Blood Furnace",
+	[553] = "The Botanica",
+	[554] = "The Mechanar",
+	[540] = "The Shattered Halls",
+	[547] = "The Slave Pens",
+	[545] = "The Steamvault",
+	[546] = "The Underbog"
 }
 
 local function GetOptions()
