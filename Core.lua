@@ -1,5 +1,6 @@
 --luacheck: globals LibStub L ChatTypeInfo DEFAULT_CHAT_FRAME GetInstanceInfo LoggingCombat C_Timer
 --luacheck: globals COMBATLOGENABLED COMBATLOGDISABLED SLASH_LOGTOGGLE1 SlashCmdList
+--luacheck: no max line length
 
 local ADDON_NAME, addon = ...
 LibStub("AceAddon-3.0"):NewAddon(addon, ADDON_NAME, "AceEvent-3.0", "AceTimer-3.0")
@@ -31,9 +32,9 @@ function addon:OnEnable()
 	delayedCheck()
 end
 
-function addon:CheckInstance(_, override)
+function addon.CheckInstance(_, override)
 	local _, instanceType, difficultyID, _, _, _, _, areaID = GetInstanceInfo()
-	local db = self.db.profile
+	local db = addon.db.profile
 
 	if instanceType == "raid" then -- raid or challenge mode
 		if override ~= nil then -- called from the prompt
@@ -41,21 +42,21 @@ function addon:CheckInstance(_, override)
 		end
 
 		if db.zones[areaID] then
-			self:EnableLogging(true)
+			addon.EnableLogging()
 			return
 		end
 	end
-	if instanceType == "party" and difficultyID == 174 then
+	if instanceType == "party" and difficultyID == 2 then
 		if override ~= nil then -- called from the prompt
 			db.zones[areaID] = override
 		end
 
 		if db.zones[areaID] then
-			self:EnableLogging()
+			addon.EnableLogging()
 			return
 		end
 	end
-	self:DisableLogging()
+	addon.DisableLogging()
 end
 
 function addon.EnableLogging()

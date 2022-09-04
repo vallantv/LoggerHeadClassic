@@ -1,4 +1,5 @@
 --luacheck: globals LibStub InterfaceOptionsFrame_OpenToCategory SLASH_LOGGERHEAD1 SLASH_LOGGERHEAD2 SlashCmdList
+--luacheck: no max line length
 
 local ADDON_NAME, addon = ...
 local module = addon:NewModule("Config")
@@ -90,7 +91,7 @@ local function GetOptions()
 		args = {
 			desc = {
 				type = "description",
-				name = L["Automatically turns on the combat log for selected raids."] .. "\n",
+				name = L["Automatically turns on the combat log for selected raids."],
 				fontSize = "medium",
 				order = 0
 			}
@@ -106,25 +107,25 @@ local function GetOptions()
 
 	options.args["Classic-Raid"] = {name = "Classic Raids", type = "group", order = 10, args = {}}
 	for mapID, name in pairs(CLASSIC_INSTANCE_INFO) do
-		options.args["Classic-Raid"].args[tostring(mapID)] = {type = "toggle", name = name, get = getFunc, set = setFunc}
+		options.args["Classic-Raid"].args[tostring(mapID)] = {type = "toggle", name = name, get = getFunc, set = setFunc, width = "full"}
 	end
 
-	options.args["BCC-Raid"] = {name = "Burning Crusade Raids", type = "group", order = 20, args = {}}
+	options.args["BCC-Raid"] = {name = "BCC Raids", type = "group", order = 20, args = {}}
 	for mapID, name in pairs(BCC_INSTANCE_INFO) do
-		options.args["BCC-Raid"].args[tostring(mapID)] = {type = "toggle", name = name, get = getFunc, set = setFunc}
+		options.args["BCC-Raid"].args[tostring(mapID)] = {type = "toggle", name = name, get = getFunc, set = setFunc, width = "full"}
 	end
 
-	options.args["BCC-Heroic"] = {name = "Burning Crusade Heroics", type = "group", order = 30, args = {}}
+	options.args["BCC-Heroic"] = {name = "BCC Heroics", type = "group", order = 30, args = {}}
 	for mapID, name in pairs(BCC_HEROIC_INFO) do
-		options.args["BCC-Heroic"].args[tostring(mapID)] = {type = "toggle", name = name, get = getFunc, set = setFunc}
+		options.args["BCC-Heroic"].args[tostring(mapID)] = {type = "toggle", name = name, get = getFunc, set = setFunc, width = "full"}
 	end
 	options.args["Wrath-Heroic"] = {name = "Wrath Heroics", type = "group", order = 40, args = {}}
 	for mapID, name in pairs(WRATH_HEROIC_INFO) do
-		options.args["Wrath-Heroic"].args[tostring(mapID)] = {type = "toggle", name = name, get = getFunc, set = setFunc}
+		options.args["Wrath-Heroic"].args[tostring(mapID)] = {type = "toggle", name = name, get = getFunc, set = setFunc, width = "full"}
 	end
 	options.args["Wrath-Raid"] = {name = "Wrath Raids", type = "group", order = 50, args = {}}
 	for mapID, name in pairs(WRATH_RAID_INFO) do
-		options.args["Wrath-Raid"].args[tostring(mapID)] = {type = "toggle", name = name, get = getFunc, set = setFunc}
+		options.args["Wrath-Raid"].args[tostring(mapID)] = {type = "toggle", name = name, get = getFunc, set = setFunc, width = "full"}
 	end
 	return options
 end
