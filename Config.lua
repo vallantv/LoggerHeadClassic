@@ -1,3 +1,5 @@
+--luacheck: globals LibStub InterfaceOptionsFrame_OpenToCategory SLASH_LOGGERHEAD1 SLASH_LOGGERHEAD2 SlashCmdList
+
 local ADDON_NAME, addon = ...
 local module = addon:NewModule("Config")
 
@@ -43,6 +45,36 @@ local BCC_HEROIC_INFO = {
 	[545] = "The Steamvault",
 	[546] = "The Underbog"
 }
+local WRATH_HEROIC_INFO = {
+	[619] = "Ahn'kahet: The Old Kingdom",
+	[601] = "Azjol-Nerub",
+	[600] = "Drak'Tharon Keep",
+	[604] = "Gundrak",
+	[602] = "Halls of Lightning",
+	[668] = "Halls of Reflection",
+	[599] = "Halls of Stone",
+	[658] = "Pit of Saron",
+	[595] = "The Culling of Stratholme",
+	[632] = "The Forge of Souls",
+	[576] = "The Nexus",
+	[578] = "The Oculus",
+	[608] = "The Violet Hold",
+	[650] = "Trial of the Champion",
+	[574] = "Utgarde Keep",
+	[575] = "Utgarde Pinnacle"
+}
+
+local WRATH_RAID_INFO = {
+	[631] = "Icecrown Citadel",
+	[533] = "Naxxramas",
+	[249] = "Onyxia's Lair",
+	[616] = "The Eye of Eternity",
+	[615] = "The Obsidian Sanctum",
+	[724] = "The Ruby Sanctum",
+	[649] = "Trial of the Crusader",
+	[603] = "Ulduar",
+	[624] = "Vault of Archavon"
+}
 
 local function GetOptions()
 	local db = addon.db.profile
@@ -86,11 +118,18 @@ local function GetOptions()
 	for mapID, name in pairs(BCC_HEROIC_INFO) do
 		options.args["BCC-Heroic"].args[tostring(mapID)] = {type = "toggle", name = name, get = getFunc, set = setFunc}
 	end
-
+	options.args["Wrath-Heroic"] = {name = "Wrath Heroics", type = "group", order = 40, args = {}}
+	for mapID, name in pairs(WRATH_HEROIC_INFO) do
+		options.args["Wrath-Heroic"].args[tostring(mapID)] = {type = "toggle", name = name, get = getFunc, set = setFunc}
+	end
+	options.args["Wrath-Raid"] = {name = "Wrath Raids", type = "group", order = 50, args = {}}
+	for mapID, name in pairs(WRATH_RAID_INFO) do
+		options.args["Wrath-Raid"].args[tostring(mapID)] = {type = "toggle", name = name, get = getFunc, set = setFunc}
+	end
 	return options
 end
 
-function module:OnInitialize()
+function module.OnInitialize()
 	LibStub("AceConfigRegistry-3.0"):RegisterOptionsTable("LoggerHeadLite", GetOptions)
 	LibStub("AceConfigDialog-3.0"):AddToBlizOptions("LoggerHeadLite", ADDON_TITLE)
 
@@ -98,7 +137,7 @@ function module:OnInitialize()
 	LibStub("AceConfigDialog-3.0"):AddToBlizOptions("LoggerHeadLite/Profiles", L["Profiles"], ADDON_TITLE)
 end
 
-function addon:OpenOptions()
+function addon.OpenOptions()
 	InterfaceOptionsFrame_OpenToCategory(ADDON_TITLE)
 	InterfaceOptionsFrame_OpenToCategory(ADDON_TITLE)
 end

@@ -1,30 +1,14 @@
+--luacheck: globals LibStub L ChatTypeInfo DEFAULT_CHAT_FRAME GetInstanceInfo LoggingCombat C_Timer
+--luacheck: globals COMBATLOGENABLED COMBATLOGDISABLED SLASH_LOGTOGGLE1 SlashCmdList
+
 local ADDON_NAME, addon = ...
 LibStub("AceAddon-3.0"):NewAddon(addon, ADDON_NAME, "AceEvent-3.0", "AceTimer-3.0")
-
-local L = LibStub("AceLocale-3.0"):GetLocale(ADDON_NAME)
 
 local defaults = {
 	profile = {
 		prompt = true,
 		zones = {
-			--Classic
-			[249] = true, --Onyxia's Lair
-			[409] = true, --Molten Core
-			[469] = true, --Blackwing Lair
-			[509] = true, --Ruins of Ahn'Qiraj
-			[531] = true, --Ahn'Qiraj Temple
-			[533] = true, --Naxxramas
-			[309] = true, --Zul'Gurub
-			--BC
-			[532] = true, --Karazhan
-			[565] = true, --Gruul's Lair
-			[544] = true, --Magtheridon's Lair
-			[564] = true, --Black Temple
-			[534] = true, --Hyjal Summit
-			[548] = true, --Serpentshrine Cavern
-			[550] = true, --Tempest Keep
-			[580] = true, --Sunwell Plateau
-			[568] = true --Zul'Aman
+			["*"] = true --Default is always enabled
 		}
 	}
 }
@@ -36,23 +20,19 @@ end
 
 function addon:OnInitialize()
 	self.db = LibStub("AceDB-3.0"):New("LoggerHeadNDB", defaults, true)
-	-- local db = self.db.profile
-	-- if db.zones == nil then
-	-- 	defaults.profile.zones;
-	-- end
 end
 
 local function delayedCheck()
-	addon:ScheduleTimer("CheckInstance", 2)
+	C_Timer.After(2, addon.CheckInstance)
 end
 
 function addon:OnEnable()
 	self:RegisterEvent("PLAYER_ENTERING_WORLD", delayedCheck)
-	self:CheckInstance()
+	delayedCheck()
 end
 
 function addon:CheckInstance(_, override)
-	local zoneName, instanceType, difficultyID, _, _, _, _, areaID = GetInstanceInfo()
+	local _, instanceType, difficultyID, _, _, _, _, areaID = GetInstanceInfo()
 	local db = self.db.profile
 
 	if instanceType == "raid" then -- raid or challenge mode
@@ -71,21 +51,21 @@ function addon:CheckInstance(_, override)
 		end
 
 		if db.zones[areaID] then
-			self:EnableLogging(true)
+			self:EnableLogging()
 			return
 		end
 	end
-	self:DisableLogging(true)
+	self:DisableLogging()
 end
 
-function addon:EnableLogging(auto)
+function addon.EnableLogging()
 	if not LoggingCombat() then
 		LoggingCombat(true)
 		print(COMBATLOGENABLED)
 	end
 end
 
-function addon:DisableLogging(auto)
+function addon.DisableLogging()
 	if LoggingCombat() then
 		LoggingCombat(false)
 		print(COMBATLOGDISABLED)
