@@ -36,7 +36,7 @@ function addon.CheckInstance(_, override)
 	local _, instanceType, difficultyID, _, _, _, _, areaID = GetInstanceInfo()
 	local db = addon.db.profile
 
-	if instanceType == "raid" then -- raid or challenge mode
+	if instanceType == "raid" or (C_Seasons.GetActiveSeason() == 2 and areaID == 48) then -- raid or challenge mode
 		if override ~= nil then -- called from the prompt
 			db.zones[areaID] = override
 		end

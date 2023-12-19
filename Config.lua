@@ -9,6 +9,7 @@ local L = LibStub("AceLocale-3.0"):GetLocale(ADDON_NAME)
 local ADDON_TITLE = "LoggerHeadLite Classic"
 
 local CLASSIC_INSTANCE_INFO = {
+	[48] = "Blackfathom Deeps (SoD)",
 	[249] = "Onyxia's Lair",
 	[409] = "Molten Core",
 	[469] = "Blackwing Lair",
